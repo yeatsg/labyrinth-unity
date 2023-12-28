@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1059342027}
   - component: {fileID: 1059342026}
+  - component: {fileID: 1059342028}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -246,8 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914600d3857f9a84bba8b9526ab02dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeWidth: 30
-  mazeHeight: 30
+  mazeWidth: 12
+  mazeHeight: 12
   startX: 0
   startY: 0
 --- !u!4 &1059342027
@@ -259,12 +260,27 @@ Transform:
   m_GameObject: {fileID: 1059342025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.031399, y: -1.8182101, z: -4.328324}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1059342028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059342025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fa7a95a1bc78746a33e55ee9348932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazeGenerator: {fileID: 1059342026}
+  MazeCellPrefab: {fileID: 4304584074763276375, guid: bda8832a237c9b948a0c84c4de9d30e1, type: 3}
+  CellSize: 1
 --- !u!1 &1994902841
 GameObject:
   m_ObjectHideFlags: 0
