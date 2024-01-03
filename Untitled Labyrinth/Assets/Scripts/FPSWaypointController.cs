@@ -81,30 +81,50 @@ public class FPSWaypointController : MonoBehaviour
     */
 
     [SerializeField] private Waypoints waypoints;
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float distanceThreshold = 0.1f;
+    //[SerializeField] private float moveSpeed = 3f;
+    //[SerializeField] private float distanceThreshold = 0.1f;
 
     private Transform currentWaypoint;
+    CharacterController characterController;
+    public float walkSpeed = 6f;
+    public float runSpeed = 12f;
+
+    public bool canMove = true;
+
+
 
     void Start ()
     {
+        //Get Pre-Built Character Controller 
+        characterController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+
+
         //Set initial position to the first waypoint
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+
         transform.position = currentWaypoint.position;
 
         //Set the next waypoint target
-        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        //currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
         transform.LookAt(currentWaypoint);
     }
 
     void Update ()
     {
-        transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
-        {
-            currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
-            transform.LookAt(currentWaypoint);
-        } 
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        moveDirection = (forward * curSpeedX);
+
+
+        //transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
+        //if (Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
+        //{
+        //  currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        // transform.LookAt(currentWaypoint);
+        //} 
+        //Vector3 right = transform.TransformDirection(Vector3.right);
     }
 
 }
