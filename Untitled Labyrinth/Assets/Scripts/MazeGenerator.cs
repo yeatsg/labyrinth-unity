@@ -164,6 +164,9 @@ public class MazeGenerator : MonoBehaviour
                 maze[currentCell.x, currentCell.y].visited = true; //Set cell to visited before moving on.
                 currentCell = nextCell; //Set the current cell to the valid neighbor we found.
                 path.Add(currentCell); //Add this cell to our path list.
+
+                if (path.Count == 1)
+                    maze[currentCell.x, currentCell.y].startingCell = true; 
             }
 
         }
@@ -183,6 +186,10 @@ public enum Direction
 public class MazeCell
 {
     public bool visited;
+    public bool startingCell;
+    public bool endingCell;
+    public bool ally;
+
     public int x, y;
 
     public bool topWall;
