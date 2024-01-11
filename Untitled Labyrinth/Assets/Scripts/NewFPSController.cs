@@ -4,7 +4,25 @@ using UnityEngine;
 
 public class NewFPSController : MonoBehaviour
 {
-    public float moveSpeed = 5f;        
+    public waypoints GameObject;
+    public float moveSpeed = 5f;
+    public float distanceThreshold = 0.1f;
+
+
+
+    private Transform currentWaypoint;
+
+
+
+
+    void Start()
+    {
+        //Set initial position to the first waypoint
+        currentWaypoint = waypoints.position;
+        transform.LookAt(currentWaypoint);
+    }
+
+ 
 
     // Update is called once per frame
     void Update()
@@ -12,7 +30,9 @@ public class NewFPSController : MonoBehaviour
         // Detect player input
         if (Input.GetKeyDown(KeyCode.W))
         {
-            MoveForward();
+            //MoveForward();
+            Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
+
         }
     }
 
